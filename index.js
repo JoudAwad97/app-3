@@ -23,6 +23,10 @@ app.get("/", (req, res) => {
   res.send("Welcome to the Home page of package 3!");
 });
 
+app.get("/db/req", (req, res) => {
+  return res.status(200).json(req);
+});
+
 app.get("/db/env-variables", (req, res) => {
   res.send(process.env);
 });
