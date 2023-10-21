@@ -24,7 +24,9 @@ app.get("/", (req, res) => {
 });
 
 app.get("/db/req", (req, res) => {
-  return res.status(200).json(req);
+  res.status(200).json({
+    headers: req.headers,
+  });
 });
 
 app.get("/db/env-variables", (req, res) => {
