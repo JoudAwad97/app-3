@@ -6,7 +6,7 @@ const app = express();
 const PORT = 3000;
 
 const dbConfig = {
-  host: "dev-catalog.cpgwvhcnpddn.us-east-2.rds.amazonaws.com",
+  host: "mysql-1",
   user: "catalog_user",
   password: "password12345",
   port: 3306,
