@@ -13,11 +13,6 @@ const dbConfig = {
 };
 
 let connection;
-try {
-  connection = mysql.createConnection(dbConfig);
-} catch (error) {
-  console.error("Error starting up the app", error);
-}
 
 app.get("/", (req, res) => {
   res.send("Welcome to the Home page of package 3!");
@@ -57,4 +52,9 @@ app.get("/db/call-endpoint", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}!!`);
+  try {
+    connection = mysql.createConnection(dbConfig);
+  } catch (error) {
+    console.error("Error starting up the app", error);
+  }
 });
