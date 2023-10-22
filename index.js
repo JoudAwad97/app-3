@@ -54,11 +54,12 @@ app.get("/db/postgres", async (req, res) => {
 });
 
 app.get("/db/verify-connection", (req, res) => {
-  connection.ping((err) => {
+  connection.query("SHOW DATABASES", (err, results) => {
     if (err) {
       console.error("Database connection error:", err);
       return res.status(500).send("Failed to connect to the database");
     }
+
     res.send("Connected successfully to the database");
   });
 });
