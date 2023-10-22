@@ -1,6 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const mysql = require("mysql");
+const { Pool } = require("pg");
 
 const app = express();
 const PORT = 3000;
@@ -15,6 +16,14 @@ const dbConfig = {
 
 let connection;
 
+const pool = new Pool({
+  user: "postgres",
+  host: "YOUR_PG_HOST",
+  database: "dev_db",
+  password: "password",
+  port: 5432,
+});
+
 app.get("/", (req, res) => {
   res.send("Welcome to the Home page of package 3!");
 });
@@ -27,6 +36,19 @@ app.get("/db/req", (req, res) => {
 
 app.get("/db/env-variables", (req, res) => {
   res.send(process.env);
+});
+
+app.get("/db/postgres", async (req, res) => {
+  try {
+    const client = await pool.connect();
+    const result = await client.query("SELECT NOW()");
+    const currentTime = result.rows[0].now;
+    res.send(`Current time in PostgreSQL is: ${currentTime}`);
+    client.release();
+  } catch (err) {
+    console.error(err);
+    res.send("Error fetching data from PostgreSQL");
+  }
 });
 
 app.get("/db/verify-connection", (req, res) => {
