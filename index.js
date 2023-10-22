@@ -18,7 +18,7 @@ let connection;
 
 const pool = new Pool({
   user: "postgres",
-  host: "YOUR_PG_HOST",
+  host: "db-dev.cpgwvhcnpddn.us-east-2.rds.amazonaws.com",
   database: "dev_db",
   password: "password",
   port: 5432,
