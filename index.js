@@ -9,7 +9,8 @@ const dbConfig = {
   host: "dev-catalog.cpgwvhcnpddn.us-east-2.rds.amazonaws.com",
   user: "catalog_user",
   password: "password12345",
-  database: "catalog",
+  port: 3306,
+  //database: "catalog",
 };
 
 let connection;
