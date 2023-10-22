@@ -10,7 +10,7 @@ const dbConfig = {
   user: "catalog_user",
   password: "password12345",
   port: 3306,
-  //database: "catalog",
+  database: "catalog",
 };
 
 let connection;
