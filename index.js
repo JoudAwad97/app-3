@@ -81,6 +81,14 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}!!`);
   try {
     connection = mysql.createConnection(dbConfig);
+    // Check if the connection is successful
+    connection.connect((err) => {
+      if (err) {
+        console.error("Error connecting to the MySQL database:", err);
+      } else {
+        console.log("Successfully connected to the MySQL database.");
+      }
+    });
   } catch (error) {
     console.error("Error starting up the app", error);
   }
