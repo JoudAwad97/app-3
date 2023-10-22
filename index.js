@@ -31,6 +31,7 @@ app.get("/db/env-variables", (req, res) => {
 app.get("/db/verify-connection", (req, res) => {
   connection.ping((err) => {
     if (err) {
+      console.error("Database connection error:", err);
       return res.status(500).send("Failed to connect to the database");
     }
     res.send("Connected successfully to the database");
@@ -54,6 +55,13 @@ app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}!!`);
   try {
     connection = mysql.createConnection(dbConfig);
+    connection.connect((err) => {
+      if (err) {
+        console.error("Error connecting to the database:", err);
+      } else {
+        console.log("Connected to the database successfully.");
+      }
+    });
   } catch (error) {
     console.error("Error starting up the app", error);
   }
