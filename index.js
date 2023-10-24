@@ -18,7 +18,7 @@ const dbConfigPrivate = {
   host: "dev-catalog.cpgwvhcnpddn.us-east-2.rds.amazonaws.com",
   user: "catalog_user",
   password: "password12345",
-  port: 3306,
+  port: 3307,
   database: "catalog",
 };
 
