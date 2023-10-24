@@ -60,7 +60,7 @@ app.listen(PORT, () => {
     // Check if the connection is successful
     connection.connect((err) => {
       if (err) {
-        console.error("Error connecting to the private MySQL database:", err);
+        console.error("Error connecting to the MySQL database:", err);
       } else {
         console.log("Successfully connected to the MySQL database.");
       }
