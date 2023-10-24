@@ -5,7 +5,7 @@ const mysql = require("mysql");
 const app = express();
 const PORT = 3000;
 
-const dbConfigPrivate = {
+const dbConfig = {
   host: "dev-catalog.cpgwvhcnpddn.us-east-2.rds.amazonaws.com",
   user: "catalog_user",
   password: "password12345",
@@ -56,7 +56,7 @@ app.get("/db/call-endpoint", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}!!`);
   try {
-    connection = mysql.createConnection(dbConfigPrivate);
+    connection = mysql.createConnection(dbConfig);
     // Check if the connection is successful
     connection.connect((err) => {
       if (err) {
