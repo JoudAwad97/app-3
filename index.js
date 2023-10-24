@@ -66,6 +66,6 @@ app.listen(PORT, () => {
       }
     });
   } catch (error) {
-    console.error("Error starting up the app", error);
+    console.error("Error starting up the app!", error);
   }
 });
