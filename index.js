@@ -6,7 +6,7 @@ const { Pool } = require("pg");
 const app = express();
 const PORT = 3000;
 
-const dbConfig = {
+const dbConfigPublic = {
   host: "database-1.cpgwvhcnpddn.us-east-2.rds.amazonaws.com",
   user: "admin",
   password: "password",
@@ -14,7 +14,16 @@ const dbConfig = {
   database: "db_default",
 };
 
+const dbConfigPrivate = {
+  host: "dev-catalog.cpgwvhcnpddn.us-east-2.rds.amazonaws.com",
+  user: "catalog_user",
+  password: "password12345",
+  port: 3306,
+  database: "catalog",
+};
+
 let connection;
+let connection2;
 
 const pool = new Pool({
   user: "postgres",
@@ -80,11 +89,25 @@ app.get("/db/call-endpoint", async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}!!`);
   try {
-    connection = mysql.createConnection(dbConfig);
+    connection = mysql.createConnection(dbConfigPublic);
     // Check if the connection is successful
     connection.connect((err) => {
       if (err) {
-        console.error("Error connecting to the MySQL database:", err);
+        console.error("Error connecting to the public MySQL database:", err);
+      } else {
+        console.log("Successfully connected to the MySQL database.");
+      }
+    });
+  } catch (error) {
+    console.error("Error starting up the app", error);
+  }
+
+  try {
+    connection2 = mysql.createConnection(dbConfigPrivate);
+    // Check if the connection is successful
+    connection2.connect((err) => {
+      if (err) {
+        console.error("Error connecting to the private MySQL database:", err);
       } else {
         console.log("Successfully connected to the MySQL database.");
       }
