@@ -15,8 +15,8 @@ const dbConfig = {
 
 let connection;
 
-app.get("/", (req, res) => {
-  res.send("Welcome to the Home page of package 3 with Rollout!");
+app.get("/db", (req, res) => {
+  res.send("Welcome to the Home page of package 3 with Rollout test!");
 });
 
 app.get("/db/req", (req, res) => {
