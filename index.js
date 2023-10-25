@@ -54,7 +54,7 @@ app.get("/db/call-endpoint", async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}!!`);
+  console.log(`Server is running on port: ${PORT}!!`);
   try {
     connection = mysql.createConnection(dbConfig);
     // Check if the connection is successful
