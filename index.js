@@ -41,7 +41,7 @@ app.get("/db/verify-connection", (req, res) => {
 });
 
 app.get("/db/dummy", (req, res) => {
-  res.json({ message: "Dummy response from package 3!! updated" });
+  res.json({ message: "Dummy response from package 3!! updated with SG" });
 });
 
 app.get("/db/call-endpoint", async (req, res) => {
